@@ -1,7 +1,7 @@
 import random, pygame, sys, os
 from pygame.locals import *
 
-FPS = 30
+FPS = 60
 WINDOWWIDTH = 1200
 WINDOWHEIGHT = 860
 CELLSIZE = 20
@@ -26,24 +26,33 @@ WINDOW.fill(WHITE)
 
 pygame.init()
 bricks = []
-bricks.append((WINDOW, BLACK, (10, 10, 40, 20)))
-bricks.append((WINDOW, BLACK, (100, 100, 40, 20)))
+bricks.append((WINDOW, BLACK, (0, 0, 30, 20)))
+bricks.append((WINDOW, BLACK, (90, 100, 30, 20)))
+
+bugs = []
+
 
 def main():
-	WINDOW.fill(WHITE)
+	WINDOW.fill(GREEN)
 	pygame.event.get()
+	
 	pos = pygame.mouse.get_pos()
 
 
-	rect1 = pygame.draw.rect(WINDOW, BLACK, (pos[0], pos[1], 40, 20))
+	circ1 = pygame.draw.circle(WINDOW, RED, (100, 100), 100)
+	
+	rect1 = pygame.draw.rect(WINDOW, BLACK, (pos[0] - pos[0] % 30, pos[1]- pos[1] % 20, 30, 20))
 
-			
+
 	for index, x in enumerate(bricks):
 		pygame.draw.rect(bricks[index][0], bricks[index][1], (bricks[index][2][0], bricks[index][2][1], bricks[index][2][2], bricks[index][2][3]))
 
-	if pygame.mouse.get_pressed()[0] == True:
-		bricks.append((WINDOW, BLACK, (pos[0], pos[1], 40, 20)))
+	
 		
+	if pygame.mouse.get_pressed()[0] == True:
+		bricks.append((WINDOW, BLACK, (pos[0] - pos[0] % 30, pos[1] - pos[1] % 20, 30, 20)))
+	
+	
 	pygame.display.update()
 	fpsClock.tick(FPS)
 
