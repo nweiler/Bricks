@@ -41,17 +41,17 @@ def main():
 
 	circ1 = pygame.draw.circle(WINDOW, RED, (100, 100), 100)
 	
-	rect1 = pygame.draw.rect(WINDOW, BLACK, (pos[0] - pos[0] % 30, pos[1]- pos[1] % 20, 30, 20))
+	
 
 
 	for index, x in enumerate(bricks):
 		pygame.draw.rect(bricks[index][0], bricks[index][1], (bricks[index][2][0], bricks[index][2][1], bricks[index][2][2], bricks[index][2][3]))
 
 	
-		
 	if pygame.mouse.get_pressed()[0] == True:
 		bricks.append((WINDOW, BLACK, (pos[0] - pos[0] % 30, pos[1] - pos[1] % 20, 30, 20)))
 	
+	rect1 = pygame.draw.rect(WINDOW, BLUE, (pos[0] - pos[0] % 30, pos[1]- pos[1] % 20, 30, 20))
 	
 	pygame.display.update()
 	fpsClock.tick(FPS)
